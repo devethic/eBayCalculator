@@ -1,0 +1,42 @@
+
+	/*POSITIONNEMENT ************************** */
+
+	* { box-sizing: border-box; margin:3px; font-family:"Open Sans","OpenSans",sans-serif;}
+
+	canvas { height:40px; width:100%; }
+
+	/*mobile first !!*/
+	@media (min-width: 640px) {
+		#page { width:640px; margin-left:auto; margin-right:auto; }
+	}
+
+	#myChart, #infosExpedAutre {display:none;}
+
+	input[type="number"], select { width:100%; padding:6px 12px; border-width:1px; border-style:solid; line-height:1.42;  outline:none;}
+	select {padding:7px 12px;}
+	button {outline:none;}
+
+	/*tabs Exped*/
+	#expedition {/*hack to remove space between tabs*/letter-spacing:-0.16em; padding-left:3px;}
+	#expedition button {letter-spacing: initial; border-width:1px; border-style:solid; padding:10px 10px; margin-left:0; margin-right:0; outline:none;}
+
+	/*form footer*/
+	form>footer>div:first-child {text-align:right; width:100%;}
+	form>footer>div>button {border-width:1px; padding:6px 40px;}
+
+	#lastModified {padding-left:3px;}
+
+
+	/*APPARENCE ******************************* */
+
+	input[type="number"], select { border-radius:4px; font-size:14px; border-color:#00a9ec;}
+	label {font-size:12px;}
+
+	/*tabs Exped*/
+	#expedition button {background-color:#00a9ec; border-color:#00a9ec; color:white; border-top-left-radius:8px; border-top-right-radius:8px; }
+	#expedition button[aria-selected="true"] {background-color:white; border-bottom-color:white; color:#00a9ec;}
+
+	/*form footer*/
+	form>footer>div>button {background-color:#00a9ec; color:white; font-size:14px; border-radius:8px; font-weight:normal; border-color:transparent;}
+
+	#lastModified {font-size:smaller; color:#b2d8ff;}

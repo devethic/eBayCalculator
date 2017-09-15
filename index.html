@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, user-scalable=yes">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>eBay calculator</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+	<div id="page">
+
+		<div>
+			<canvas id="myChart" height="180"></canvas>
+		</div>
+
+		<form method="post" id="calcRevenu" onsubmit="return getResult(this);">
+
+			<!-- prix -->
+			<div>
+				<label for="prixDeVente">prix de vente</label>
+				<input type="number" step="0.01" id="prixDeVente" name="prixDeVente" min="1" required>
+			</div>
+
+			<!-- tabs Exped -->
+			<div id="expedition" role="tablist">
+				<button role="tab" type="button" id="prixExpedMainPropre" aria-controls="infosExpedMainPropre" aria-selected="false">En main propre</button>
+				<button role="tab" type="button" id="prixExpedMondialRelais" aria-controls="infosExpedMondialRelais" aria-selected="true">Mondial Relais</button>
+				<button role="tab" type="button" id="prixExpedAutre" aria-controls="infosExpedAutre" aria-selected="false">Autre</button>
+			</div>
+			<div id="infosExpedMainPropre" role="tabpanel" aria-labelledby="prixExpedMainPropre"></div>
+			<div id="infosExpedMondialRelais" role="tabpanel" aria-labelledby="prixExpedMondialRelais">
+				<label for="selPrixExpedMondialRelais">payé à Mondial</label>
+				<select id="selPrixExpedMondialRelais" name="selPrixExpedMondialRelais" required>
+					<option value="3.85">0,5 à 2 Kg - 3,85 €</option>
+					<option value="4.35">3 Kg - 4,35 €</option>
+					<option value="4.95">5 Kg - 4,95 €</option>
+					<option value="6.50">7 Kg - 6,50 €</option>
+					<option value="7.60">10 Kg - 7,60 €</option>
+					<option value="9.70">15 Kg - 9,70 €</option>
+					<option value="12.65">30 Kg - 12,65 €</option>
+				</select>
+			</div>
+			<div id="infosExpedAutre" role="tabpanel" aria-labelledby="prixExpedAutre">
+				<label for="prixExpedPayeAutre">payé au livreur</label><input type="number" min="1" step="0.01" name="prixExpedPayeAutre" id="prixExpedPayeAutre">
+			</div>
+			<div id="infosExpedCommon">
+				<label for="prixColisExped">prix colis</label><input type="number" name="prixColisExped" min="0" step="0.01" id="prixColisExped" required value="0">
+				<!-- <label for="prixExpedAcheteur">prix acheteur</label><input type="number" name="prixExpedAcheteur" min="0" step="0.01" id="prixExpedAcheteur" value="0"> -->
+			</div>
+
+			<footer>
+				<div><button type="submit">Ok</button></div>
+			</footer>
+		</form>
+
+		<footer>
+			<div id="lastModified"></div>
+		</footer>
+	</div>
+	<!-- !!! -->
+	<script type="text/javascript" src="chart.min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
