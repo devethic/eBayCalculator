@@ -33,8 +33,7 @@ let Local = {
       "lblPrixExpedPayeAutre": "prix livreur",
       "lblSelPrixExpedMondialRelais": "prix livreur",
       "lblPrixColisExped": "prix colis",
-      "btnSubmit": "Ok",
-      "lastModified": "`© ${varname1} DevEthic, modifié le ${varname2} à ${varname3}`"
+      "btnSubmit": "Ok"
     },
     "TEXT": {
       "chartLegendProfit": "Revenu",
@@ -44,7 +43,8 @@ let Local = {
       "chartLblHandDelivery": "`${varname1}€ En main propre`",
       "chartLblDeliveryFreeEmbedded": "`${varname1}€ Livraison gratuite`",
       "chartLblDeliveryFreeIntegrated": "`${varname1}€ Livraison gratuite`",
-      "chartLblDeliveryCostZero": "`${varname1}€ + ${varname2}€ = ${varname3}€ Livraison coût zéro`"
+      "chartLblDeliveryCostZero": "`${varname1}€ + ${varname2}€ = ${varname3}€ Livraison coût zéro`",
+      "lastModified": "`© ${varname1} DevEthic, modifié le ${varname2} à ${varname3}`"
     }
   },
   en: {
@@ -56,8 +56,7 @@ let Local = {
       "lblPrixExpedPayeAutre": "shipping price",
       "lblSelPrixExpedMondialRelais": "shipping price",
       "lblPrixColisExped": "packet cost",
-      "btnSubmit": "Ok",
-      "lastModified": "`© ${varname1} DevEthic, modified ${varname2} at ${varname3}`"
+      "btnSubmit": "Ok"
     },
     "TEXT": {
       "chartLegendProfit": "Profit",
@@ -67,7 +66,8 @@ let Local = {
       "chartLblHandDelivery": "`${varname1}€ Hand delivery`",
       "chartLblDeliveryFreeEmbedded": "`${varname1}€ Free delivery`",
       "chartLblDeliveryFreeIntegrated": "`${varname1}€ Free delivery`",
-      "chartLblDeliveryCostZero": "`${varname1}€ + ${varname2}€ = ${varname3}€ Zero cost delivery`"
+      "chartLblDeliveryCostZero": "`${varname1}€ + ${varname2}€ = ${varname3}€ Zero cost delivery`",
+      "lastModified": "`© ${varname1} DevEthic, modified ${varname2} at ${varname3}`"
     }
   }
 };

@@ -260,7 +260,7 @@ let LastModified = {
     let year = d.getFullYear();
     let date = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
     let hour = (d.getHours() < 10 ? "0":"") + d.getHours() + ":" + (d.getMinutes() < 10 ? "0":"") + d.getMinutes();
-    document.getElementById("lastModified").innerHTML = Local.text("", year, date, hour);
+    document.getElementById("lastModified").innerHTML = Local.text("lastModified", year, date, hour);
   }
 };
 function round(pVal) {
