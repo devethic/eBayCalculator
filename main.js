@@ -1,4 +1,4 @@
-let dLM = new Date(document.lastModified);
+//import {Local} from "local";
 let ctx = document.getElementById("myChart").getContext('2d');
 let myChart = null;
 let Fee = {
@@ -83,6 +83,7 @@ let Delivery = {
   }
 };
 let Graphic = {
+  tmp: null,
   conf: {
     showDeliveryFreeEmbedded:true,
     showDeliveryFreeIntegrated:true,
@@ -184,7 +185,7 @@ let Graphic = {
     let eBayCost = Fee.eBayCost(pfPrice);
 
     // Remis en main propre : pas de frais ni coûts de livraison
-    tLabels.push(pfPrice + "€ En main propre");
+    tLabels.push(Local.text("chartLblHandDelivery", pfPrice));
     tProfit.push(round(pfPrice - eBayCost - paypalCost));
     tEbayCost.push(eBayCost);
     tPaypalCost.push(paypalCost);
@@ -193,7 +194,7 @@ let Graphic = {
     if (!pbHandDelivery) {
       if (Graphic.conf.showDeliveryFreeEmbedded) {
         // Livraison gratuite : on intègre la livraison sans modif du prix de vente
-        tLabels.push(pfPrice + "€ Livraison gratuite");
+        tLabels.push(Local.text("chartLblDeliveryFreeEmbedded", pfPrice));
         tProfit.push(round(pfPrice - eBayCost - paypalCost - Delivery.cost()));
         tEbayCost.push(eBayCost);
         tPaypalCost.push(paypalCost);
@@ -203,7 +204,7 @@ let Graphic = {
         // Livraison gratuite : on intègre la livraison au prix de vente
         eBayCost = Fee.eBayCost(pfPrice + Delivery.cost());
         paypalCost = Fee.paypalCost(pfPrice + Delivery.cost());
-        tLabels.push(round(pfPrice + Delivery.cost()) + "€ Livraison gratuite");
+        tLabels.push(Local.text("chartLblDeliveryFreeIntegrated", round(pfPrice + Delivery.cost())));
         tProfit.push(round(pfPrice + Delivery.cost() - eBayCost - paypalCost - Delivery.cost()));
         tEbayCost.push(eBayCost);
         tPaypalCost.push(paypalCost);
@@ -213,7 +214,7 @@ let Graphic = {
         // Livraison à coût zéro ==> (prix colis + prix Livraison) / (1 - eBay comm) == prix acheteur
         eBayCost = Fee.eBayCost(pfPrice + Delivery.costZero());
         paypalCost = Fee.paypalCost(pfPrice);
-        tLabels.push(round(pfPrice) + " + " + Delivery.costZero() + " = "+round(pfPrice + Delivery.costZero())+"€ livraison à coût zero");
+        tLabels.push(Local.text("chartLblDeliveryCostZero", round(pfPrice), Delivery.costZero(), round(pfPrice + Delivery.costZero())));
         tProfit.push(round(pfPrice + Fee.eBayCost(Delivery.costZero()) - eBayCost - paypalCost));
         tEbayCost.push(eBayCost);
         tPaypalCost.push(paypalCost);
@@ -227,19 +228,19 @@ let Graphic = {
     let oData = {
       labels: tLabels,
       datasets: [{
-        label: 'Revenu',
+        label: Local.text("chartLegendProfit"),
         data: tProfit,
         backgroundColor: Graphic.colors.green
       }, {
-        label: 'EBay',
+        label: Local.text("chartLegendEbay"),
         data: tEbayCost,
         backgroundColor: Graphic.colors.red
       }, {
-        label: 'Paypal',
+        label: Local.text("chartLegendPaypal"),
         data: tPaypalCost,
         backgroundColor: Graphic.colors.orange
       }, {
-        label: 'Livraison',
+        label: Local.text("chartLegendDelivery"),
         data: tDeliveryCost,
         backgroundColor: Graphic.colors.yellow
       }]
@@ -253,7 +254,15 @@ let Graphic = {
     }
   }
 };
-
+let LastModified = {
+  init: function () {
+    let d = new Date(document.lastModified);
+    let year = d.getFullYear();
+    let date = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
+    let hour = (d.getHours() < 10 ? "0":"") + d.getHours() + ":" + (d.getMinutes() < 10 ? "0":"") + d.getMinutes();
+    document.getElementById("lastModified").innerHTML = Local.text("", year, date, hour);
+  }
+};
 function round(pVal) {
   return Math.round(100*(pVal))/100;
 }
@@ -262,6 +271,7 @@ function getResult(oForm) {
   return false;
 }
 
-document.getElementById("lastModified").innerHTML = "© "+dLM.getFullYear()+" DevEthic, modifiée le " + dLM.getDate() + "/" + (dLM.getMonth()+1) + "/" + dLM.getFullYear() + " à " + (dLM.getHours()<10?"0":"")+dLM.getHours()+":"+(dLM.getMinutes()<10?"0":"")+dLM.getMinutes();
+Local.init();
 Delivery.initTabs();
+LastModified.init();
 Object.assign(Graphic.conf, {showDeliveryFreeEmbedded:false});

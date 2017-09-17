@@ -18,7 +18,7 @@
 
 			<!-- prix -->
 			<div>
-				<label for="prixDeVente">prix de vente</label>
+				<label id="lblPrixDeVente" for="prixDeVente">prix de vente</label>
 				<input type="number" step="0.01" id="prixDeVente" name="prixDeVente" min="1" required>
 			</div>
 
@@ -30,7 +30,7 @@
 			</div>
 			<div id="infosExpedMainPropre" role="tabpanel" aria-labelledby="prixExpedMainPropre"></div>
 			<div id="infosExpedMondialRelais" role="tabpanel" aria-labelledby="prixExpedMondialRelais">
-				<label for="selPrixExpedMondialRelais">payé à Mondial</label>
+				<label id="lblSelPrixExpedMondialRelais" for="selPrixExpedMondialRelais">payé à Mondial</label>
 				<select id="selPrixExpedMondialRelais" name="selPrixExpedMondialRelais" required>
 					<option value="3.85">0,5 à 2 Kg - 3,85 €</option>
 					<option value="4.35">3 Kg - 4,35 €</option>
@@ -42,15 +42,15 @@
 				</select>
 			</div>
 			<div id="infosExpedAutre" role="tabpanel" aria-labelledby="prixExpedAutre">
-				<label for="prixExpedPayeAutre">payé au livreur</label><input type="number" min="1" step="0.01" name="prixExpedPayeAutre" id="prixExpedPayeAutre">
+				<label id="lblPrixExpedPayeAutre" for="prixExpedPayeAutre">payé au livreur</label><input type="number" min="1" step="0.01" name="prixExpedPayeAutre" id="prixExpedPayeAutre">
 			</div>
 			<div id="infosExpedCommon">
-				<label for="prixColisExped">prix colis</label><input type="number" name="prixColisExped" min="0" step="0.01" id="prixColisExped" required value="0">
+				<label id="lblPrixColisExped" for="prixColisExped">prix colis</label><input type="number" name="prixColisExped" min="0" step="0.01" id="prixColisExped" required value="0">
 				<!-- <label for="prixExpedAcheteur">prix acheteur</label><input type="number" name="prixExpedAcheteur" min="0" step="0.01" id="prixExpedAcheteur" value="0"> -->
 			</div>
 
 			<footer>
-				<div><button type="submit">Ok</button></div>
+				<div><button id="btnSubmit" type="submit">Ok</button></div>
 			</footer>
 		</form>
 
@@ -59,6 +59,7 @@
 		</footer>
 	</div>
 	<!-- !!! -->
+	<script type="text/javascript" src="local.js"></script>
 	<script type="text/javascript" src="Chart.min.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 </body>
