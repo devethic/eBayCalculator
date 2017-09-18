@@ -26,6 +26,8 @@
 
 	#lastModified {padding-left:3px;}
 
+	#menuLangs ul {margin:0; padding:0; display:inline-block;}
+
 
 	/*APPARENCE ******************************* */
 
@@ -40,3 +42,6 @@
 	form>footer>div>button {background-color:#00a9ec; color:white; font-size:14px; border-radius:8px; font-weight:normal; border-color:transparent;}
 
 	#lastModified {font-size:smaller; color:#b2d8ff;}
+
+	#menuLangs ul li {list-style:none; display:inline-block;}
+	#menuLangs a {font-size:smaller; color:#00a9ec; text-decoration:none; }

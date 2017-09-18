@@ -2,8 +2,11 @@ let Local = {
   defaults: ["fr","en"],
   current: null,
   init: function () {
-    let key = Local.defaults.indexOf(navigator.language.substr(0,2));
-    Local.current = Local.defaults[key == -1 ? 0 : key];
+    Local.setCurrent(navigator.language.substr(0,2));
+  },
+  setCurrent: function (langKey) {
+    let defaultsKey = Local.defaults.indexOf(langKey);
+    Local.current = Local.defaults[defaultsKey == -1 ? 0 : defaultsKey];
     Local.translateIds();
   },
   translateIds: function () {

@@ -1,6 +1,21 @@
 //import {Local} from "local";
 let ctx = document.getElementById("myChart").getContext('2d');
 let myChart = null;
+let Menu = {
+  clickLangs: function () {
+    Local.setCurrent(this.getAttribute("data-local"));
+    return false;
+  },
+  initLangs: function () {
+    let t = document.querySelectorAll('#menuLangs li>a');
+    for(let i=0; i<t.length; i++) {
+      t[i].onclick = Menu.clickLangs;
+    }
+  },
+  init: function () {
+    Menu.initLangs();
+  }
+};
 let Fee = {
   paypalCom: 0.034, //%
   paypalComByTransac: 0.25, //€
@@ -80,6 +95,9 @@ let Delivery = {
     for(let i=0; i<t.length; i++) {
       t[i].onclick = Delivery.clickTab;
     }
+  },
+  init: function () {
+    Delivery.initTabs();
   }
 };
 let Graphic = {
@@ -272,6 +290,7 @@ function getResult(oForm) {
 }
 
 Local.init();
-Delivery.initTabs();
+Menu.init();
+Delivery.init();
 LastModified.init();
 Object.assign(Graphic.conf, {showDeliveryFreeEmbedded:false});
