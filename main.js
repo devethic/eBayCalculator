@@ -3,7 +3,9 @@ let ctx = document.getElementById("myChart").getContext('2d');
 let myChart = null;
 let Menu = {
   clickLangs: function () {
-    Local.setCurrent(this.getAttribute("data-local"));
+    Local.setCurrent(this.getAttribute("data-local"), () => {
+      if (myChart != null)
+        document.getElementById("calcRevenu").onsubmit();});
     return false;
   },
   initLangs: function () {

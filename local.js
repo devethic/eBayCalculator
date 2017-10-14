@@ -4,10 +4,12 @@ let Local = {
   init: function () {
     Local.setCurrent(navigator.language.substr(0,2));
   },
-  setCurrent: function (langKey) {
+  setCurrent: function (langKey, fxCallback) {
     let defaultsKey = Local.defaults.indexOf(langKey);
     Local.current = Local.defaults[defaultsKey == -1 ? 0 : defaultsKey];
     Local.translateIds();
+    if (typeof fxCallback == "function")
+      fxCallback.call(this);
   },
   translateIds: function () {
     for(let key in Local[Local.current]["ID"]) {
