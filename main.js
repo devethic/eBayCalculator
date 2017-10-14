@@ -37,7 +37,7 @@ let Delivery = {
     return round(Delivery.packetPrice() + Delivery.price());
   },
   costZero: function () {
-    return round(Delivery.cost() / (1 - Fee.ebayCom));
+    return round(Delivery.cost() / (1 - (Fee.ebayCom + Fee.paypalCom))); // on ne compte pas paypalComByTransac car déjà dans compté
   },
   price: function () {
     let ret = 0;
@@ -178,8 +178,8 @@ let Graphic = {
        tooltips: {
          mode: 'index',
          callbacks: {
-           // Use the footer callback to display the percentage of the items showing in the tooltip
-           footer: function(tooltipItems, data) {
+           // Use the afterTitle callback to display the percentage of the items showing in the tooltip
+           afterTitle: function(tooltipItems, data) {
              var frais = 0;
              tooltipItems.forEach(function(tooltipItem) {
                frais = round(100*(data.datasets[1].data[tooltipItem.index] / (data.datasets[0].data[tooltipItem.index] + data.datasets[1].data[tooltipItem.index])));
@@ -188,7 +188,7 @@ let Graphic = {
              return 'Frais = ' + frais + '%';
            },
          },
-         footerFontStyle: 'normal'
+         yAlign: "0"
        }
      }
     });
@@ -231,10 +231,10 @@ let Graphic = {
         tDeliveryCost.push(Delivery.cost());
       }
       if (Graphic.conf.showDeliveryCostZero) {
-        // Livraison à coût zéro ==> (prix colis + prix Livraison) / (1 - eBay comm) == prix acheteur
+        // Livraison à coût zéro ==> (prix colis + prix Livraison) / (1 - (Fee.ebayCom + Fee.paypalCom)) == prix acheteur
         eBayCost = Fee.eBayCost(pfPrice + Delivery.costZero());
-        paypalCost = Fee.paypalCost(pfPrice);
-        tLabels.push(Local.text("chartLblDeliveryCostZero", round(pfPrice), Delivery.costZero(), round(pfPrice + Delivery.costZero())));
+        paypalCost = Fee.paypalCost(pfPrice + Delivery.costZero());
+        tLabels.push(Local.text("chartLblDeliveryCostZero", round(pfPrice + Delivery.costZero()), Delivery.costZero()));
         tProfit.push(round(pfPrice + Fee.eBayCost(Delivery.costZero()) - eBayCost - paypalCost));
         tEbayCost.push(eBayCost);
         tPaypalCost.push(paypalCost);

@@ -48,7 +48,7 @@ let Local = {
       "chartLblHandDelivery": "`${varname1}€ En main propre`",
       "chartLblDeliveryFreeEmbedded": "`${varname1}€ Livraison gratuite`",
       "chartLblDeliveryFreeIntegrated": "`${varname1}€ Livraison gratuite`",
-      "chartLblDeliveryCostZero": "`${varname1}€ + ${varname2}€ = ${varname3}€ Livraison coût zéro`",
+      "chartLblDeliveryCostZero": "`${varname1}€ dont ${varname2}€ Coût zéro`",
       "lastModified": "`© ${varname1} DevEthic, modifié le ${varname2} à ${varname3}`"
     }
   },
@@ -71,7 +71,7 @@ let Local = {
       "chartLblHandDelivery": "`${varname1}€ Hand delivery`",
       "chartLblDeliveryFreeEmbedded": "`${varname1}€ Free delivery`",
       "chartLblDeliveryFreeIntegrated": "`${varname1}€ Free delivery`",
-      "chartLblDeliveryCostZero": "`${varname1}€ + ${varname2}€ = ${varname3}€ Zero cost delivery`",
+      "chartLblDeliveryCostZero": "`${varname1}€ whose ${varname2}€ Cost zero`",
       "lastModified": "`© ${varname1} DevEthic, modified ${varname2} at ${varname3}`"
     }
   }
