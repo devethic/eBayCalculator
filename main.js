@@ -4,6 +4,7 @@ let myChart = null;
 let Menu = {
   clickLangs: function () {
     Local.setCurrent(this.getAttribute("data-local"), () => {
+      LastModified.show();
       if (myChart != null)
         document.getElementById("calcRevenu").onsubmit();});
     return false;
@@ -275,12 +276,18 @@ let Graphic = {
   }
 };
 let LastModified = {
+  year:"",
+  date:"",
+  hour:"",
   init: function () {
     let d = new Date(document.lastModified);
-    let year = d.getFullYear();
-    let date = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
-    let hour = (d.getHours() < 10 ? "0":"") + d.getHours() + ":" + (d.getMinutes() < 10 ? "0":"") + d.getMinutes();
-    document.getElementById("lastModified").innerHTML = Local.text("lastModified", year, date, hour);
+    LastModified.year = d.getFullYear();
+    LastModified.date = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
+    LastModified.hour = (d.getHours() < 10 ? "0":"") + d.getHours() + ":" + (d.getMinutes() < 10 ? "0":"") + d.getMinutes();
+    LastModified.show();
+  },
+  show: function () {
+    document.getElementById("lastModified").innerHTML = Local.text("lastModified", LastModified.year, LastModified.date, LastModified.hour);
   }
 };
 function round(pVal) {
